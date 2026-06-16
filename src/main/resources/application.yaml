@@ -1,0 +1,34 @@
+server:
+  port: 8083
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: Vedant@271
+    url: jdbc:postgresql://localhost:5433/itpspringbootdb
+  application:
+    name: itp-springboot-demo
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+#  security:
+#    user:
+#      name: "Tom"
+#      password: "jerry"
+#  profiles:
+#    active: test
+
+logging:
+  file:
+    name: logs/itp/ems.log
+  level:
+    com:
+      itp: DEBUG
+    root: INFO
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n'
