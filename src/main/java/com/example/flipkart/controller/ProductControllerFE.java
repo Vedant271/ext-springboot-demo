@@ -8,6 +8,7 @@ import java.security.Principal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,6 +29,7 @@ public class ProductControllerFE {
 	@Autowired
 	ProductService productService;
 
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@RequestMapping("/allProducts")
 	String listOfProducts(Model model) {
 		List<ProductDTO> products = productService.getAllProducts();
@@ -35,6 +37,7 @@ public class ProductControllerFE {
 		return "list-of-products2";
 	}
 
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@RequestMapping("/addProductForm")
 	String addProductsForm(Model model) {
 		ProductDTO productDTO = new ProductDTO();
@@ -43,6 +46,7 @@ public class ProductControllerFE {
 		return "add-product-form-new";
 	}
 
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@PostMapping("/addUpdateProduct")
 	public String addOrUpdateProduct(@ModelAttribute ProductDTO productDTO, @RequestParam("imageFile") MultipartFile file) throws IOException {
 		if (!file.isEmpty()) {
@@ -63,12 +67,14 @@ public class ProductControllerFE {
 		return "redirect:/allProducts";
 	}
 
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping("/deleteProductFE/{pid}")
 	public String deleteProduct(@PathVariable int pid) {
 		productService.deleteProduct(pid);
 		return "redirect:/allProducts";
 	}
 
+	@PreAuthorize("hasAnyRole('ADMIN')")
 	@RequestMapping("/updateProductForm/{pid}")
 	public String updateProductForm(@PathVariable int pid, Model model) {
 		ProductDTO productDTO = productService.getProduct(pid);
@@ -76,6 +82,7 @@ public class ProductControllerFE {
 		return "add-product-form-new";
 	}
 	
+	@PreAuthorize("hasAnyRole('USER','ADMIN')")
 	@RequestMapping(value = "/403")
 	public ModelAndView accesssDenied(Principal user) {
 		ModelAndView model = new ModelAndView();

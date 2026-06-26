@@ -29,7 +29,7 @@ public class AppUserDetails implements UserDetails {
 
 		for (Role role : userRoles) {
 			System.out.println("ROLE FROM DB = " + role.getRoleName());
-			authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
+			authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRoleName()));
 		}
 
 		return authorities;
