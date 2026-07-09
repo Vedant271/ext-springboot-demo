@@ -47,7 +47,7 @@
 			width: 100%;
 			padding: 12px;
 			border: none;
-			background: #1976d2;
+			background: #4CAF50;
 			color: white;
 			border-radius: 6px;
 			font-size: 16px;
@@ -55,7 +55,7 @@
 		}
 
 		button:hover {
-			background: #1565c0;
+			background: #388E3C;
 		}
 
 		.divider {
@@ -65,19 +65,33 @@
 			font-size: 14px;
 		}
 
-		.google-btn {
-			display: block;
-			text-align: center;
-			text-decoration: none;
-			background: #db4437;
-			color: white;
-			padding: 12px;
-			border-radius: 6px;
-			font-weight: bold;
+		.google-container {
+			display: flex;
+			justify-content: center;
 		}
 
-		.google-btn:hover {
-			background: #c1351d;
+		.google-btn {
+			display: inline-flex;
+			text-decoration: none;
+		}
+
+		.google-icon {
+			width: 42px;
+			height: 42px;
+			border-radius: 50%;
+			background: #c0c0c0;
+			color: #fff;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 22px;
+			font-weight: bold;
+			cursor: pointer;
+			transition: .25s;
+		}
+
+		.google-icon:hover {
+			background: #B22234;
 		}
 	</style>
 </head>
@@ -98,11 +112,13 @@
 
 		</form>
 
-		<div class="divider">OR</div>
+		<div class="divider">or you can sign in with</div>
 
-		<a href="/oauth2/authorization/google" class="google-btn">
-			Login with Google
-		</a>
+		<div class="google-container">
+			<a href="/oauth2/authorization/google" class="google-btn">
+				<span class="google-icon">G</span>
+			</a>
+		</div>
 
 	</div>
 

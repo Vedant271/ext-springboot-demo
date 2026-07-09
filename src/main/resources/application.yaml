@@ -2,7 +2,7 @@ server:
   port: 8083
 spring:
   config:
-      import: optional:application-secret.yml
+      import: optional:application-secret.yaml
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5433/itpspringbootdb
