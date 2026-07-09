@@ -1,10 +1,10 @@
 server:
   port: 8083
 spring:
+  config:
+      import: optional:application-secret.yml
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: Vedant@271
     url: jdbc:postgresql://localhost:5433/itpspringbootdb
   application:
     name: itp-springboot-demo
@@ -16,6 +16,19 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: 'true'
+  # Oauth Google
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            scope: 
+              - openid
+              - profile
+              - email
+    h2:
+      console:
+        enabled: 'true'
 #  security:
 #    user:
 #      name: "Tom"

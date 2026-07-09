@@ -31,3 +31,9 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Logs ###
+logs/itp/ems.log
+
+### Properties secrets ###
+src/main/resources/application-secret.yaml
